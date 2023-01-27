@@ -1,0 +1,30 @@
+<html>
+
+<body>
+    <h1>Socket.io</h1>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <div id="msg"></div>
+    <input type="text" />
+    <script>
+        const socket = io()
+        socket.on('connect', function () {
+            $('#msg').append('Conectado pelo ID: ' + socket.id + '<br>');
+            socket.emit('msg', 'Eu estou conectado ' + socket.id)
+        })
+        socket.on('msg', function (msg) {
+            $('#msg').append(msg + '<br>');
+        })
+        $(function () {
+            $("input").keydown(function (key) {
+                if (key.keyCode === 13) {
+                    socket.emit('msg', $(this).val());
+                    $(this).val('');
+                }
+
+            })
+        })
+    </script>
+</body>
+
+</html>
