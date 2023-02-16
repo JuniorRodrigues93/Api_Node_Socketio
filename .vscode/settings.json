@@ -5,6 +5,7 @@
         "conectado",
         "representa",
         "servidor",
-        "usuário"
+        "usuário",
+        "http.port: 8080",
     ]
 }
