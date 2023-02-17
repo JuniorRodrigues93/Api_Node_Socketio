@@ -1,7 +1,10 @@
+const { Socket } = require('socket.io');
 const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const porta = process.env.PORT || 3333
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -18,3 +21,5 @@ io.on('connection', (socket) => {
 server.listen(porta, function () {
     console.log('Listening on port 3333')
 });
+
+// Conexão com o servidor
